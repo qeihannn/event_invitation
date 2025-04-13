@@ -135,6 +135,7 @@ while ($acara = mysqli_fetch_assoc($exec)) :
             <div class="modal-body">
                 <form action="proses_kategori.php" method="POST">
                     <div>
+                      
                         <label for="namaKategori" class="form-label">Nama Kategori</label>
                         <!-- Input untuk nama kategori baru -->
                         <input type="text" class="form-control" name="nama_acara" required/>

@@ -5,7 +5,7 @@
     <!-- Logo -->
     <div class="app-brand justify-content-center">
       <a href="index.html" class="app-brand-link gap-2">
-        <span class="app-brand-text demo text-uppercase fw-bolder">event invitation</span>
+        <span class="app-brand-text demo text-uppercase fw-bolder">Event Invitation</span>
       </a>
     </div>
     <!-- /Logo -->

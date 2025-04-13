@@ -2,35 +2,40 @@
 session_start();
 require_once("../config.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $namaTamu = $_POST["namaTamu"];
+    $email = $_POST["email"];
 
-    $sql = "SELECT * FROM users WHERE username='$username'";
+    $sql = "SELECT * FROM tamu WHERE namaTamu='$namaTamu'";
     $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
+    if ($result->num_rows> 0){
         $row = $result->fetch_assoc();
-        //Verifikasi password
-        if (password_verify($password, $row["password"])) {
-            $_SESSION["username"] = $username;
-            $_SESSION["name"] = $row["name"];
-            $_SESSION["role"] = $row["role"];
-            $_SESSION["user_id"] = $row["user_id"];
-            //set notifikasi selamat datang
-            $_SESSION['notification'] = ['type' => 'primary', 'message' => 'Selamat Datang Kembali!'];
-            //redirect ke dashboard
+
+        if ($email === $row["email"]) {
+            $_SESSION["namaTamu"] = $namaTamu;
+            $_SESSION["status_kehadiran"] = $row["status_kehadiran"];
+            $_SESSION["tamu_id"] = $row["tamu_id"];
+
+            $_SESSION['notification'] = [
+                'type' => 'primary',
+                'message' => 'selamat datang'
+            ];
             header('Location: ../dashboard.php');
             exit();
-        } else {
-            //password salah
-            $_SESSION['notification'] = ['type' => 'danger', 'message' => 'Username atau Password salah'];
+        }else {
+            $_SESSION['notification'] = [
+                'type' => 'danger',
+                'message' => 'namaTamu atau email salah'
+            ];
         }
     } else {
-        //username tidak ditemukan
-        $_SESSION['notification'] = ['type'  => 'danger', 'message' => 'Username atau Password salah'];
+        $_SESSION['notification'] = [
+            'type' =>'danger',
+            'message' => 'namaTamu atau email salah',
+
+        ];
     }
-    //redirect kembali ke halaman login jika gagal
     header('Location: login.php');
     exit();
 }

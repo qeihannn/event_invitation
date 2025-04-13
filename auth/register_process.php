@@ -1,28 +1,29 @@
 <?php
 require_once("../config.php");
-
+// Mulai session
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    $name = $_POST["name"];
-    $password = $_POST["password"];
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $namaTamu = $_POST["namaTamu"];
+    $email = $_POST["email"];
+    
+    
 
-    $sql = "INSERT INTO users (username, name, password)
-    VALUES ('$username','$name','$hashedPassword')";
+    $sql = "INSERT INTO tamu (namaTamu, email)
+            VALUES ('$namaTamu', '$email')";
     if ($conn->query($sql) === TRUE) {
-
-        $SESSION['notification'] = [
+        // Simpan notifikasi ke dalam session
+        $_SESSION['notification'] = [
             'type' => 'primary',
             'message' => 'Registrasi Berhasil!'
         ];
     } else {
-        $SESSION['notification'] = [
+        $_SESSION['notification'] = [
             'type' => 'danger',
             'message' => 'Gagal Registrasi: ' . mysqli_error($conn)
         ];
     }
+
     header('Location: login.php');
     exit();
 }

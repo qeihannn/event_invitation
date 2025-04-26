@@ -1,18 +1,12 @@
 <?php
-
-
-$host =  "localhost";
+$host = "localhost";
 $username = "root";
 $password = "";
-$database = "project akhir";
-
+$database = "event_invitation";
 
 $conn = mysqli_connect($host, $username, $password, $database);
 
-
 if ($conn->connect_error) {
-
-    die("Database gagal terkoneksi: " . $conn->connect_error);
+    die("DATABASE GAGAL TERKONEKSI: " . $conn->connect_error);
 }
-
 ?>

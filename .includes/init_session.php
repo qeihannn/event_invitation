@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$userId = $_SESSION["user_id"];
-$name = $_SESSION["name"];
-$role = $_SESSION["role"];
+$tamuId = $_SESSION["tamu_id"];
+;
+
 
 $notification = $_SESSION['notification'] ?? null;
 if ($notification) {
@@ -11,11 +11,3 @@ if ($notification) {
 }
 
 
-if (empty($_SESSION["username"]) || empty($_SESSION["role"])) {
-    $_SESSION['notification'] = [
-        'type' => 'danger' ,
-        'message' => 'silahkan login terlebih dahulu!'
-    ];
-    header('Location: ./auth/login.php');
-    exit();
-}

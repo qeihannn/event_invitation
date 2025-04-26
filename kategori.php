@@ -35,6 +35,7 @@ while ($acara = mysqli_fetch_assoc($exec)) :
 ?>
 <tr>
     <!-- Menampilkan nomor, nama kategori, dan opsi -->
+     
     <td><?= $index++; ?></td>
     <td><?= $acara['nama_acara']; ?></td>
     <td>
@@ -120,6 +121,33 @@ while ($acara = mysqli_fetch_assoc($exec)) :
 </table>
 </div>
 </div>
+
+<div style="display: flex; justify-content: flex-center; gap: 2rem;">
+  <div class="border border-3">
+<div class="card" style="width: 14rem;">
+  <img src="https://pernikahan.or.id/wp-content/uploads/2023/03/canva-putih-merah-bunga-mewah-undangan-pernikahan-Hkh1TyGPAgE-1.jpg" class="card-img-top" alt="">
+  <div class="card-body">
+    <p class="text-center">WEDING</p>
+  </div>
+  </div>
+</div>
+<div class="border border-3">
+<div class="card" style="width: 14rem;">
+  <img src="https://imgv2-2-f.scribdassets.com/img/document/426520668/original/4cf3183ee3/1680082866?v=1" class="card-img-top" alt="">
+  <div class="card-body">
+    <p class="text-center">MEETING</p>
+  </div>
+  </div>
+</div>
+<div class="border border-3">
+<div class="card" style="width: 14rem;">
+  <img src="http://1.bp.blogspot.com/-V1bBCupdAjg/Ula052qYfmI/AAAAAAAAF5g/xIZ0ljEToHE/s1600/Surat+Undangan+Ulang+Tahun+1.jpg" class="card-img-top" alt="">
+  <div class="card-body">
+    <p class="text-center">BIRTHDAY</p>
+  </div>
+  </div>
+  </div>
+</div>
 </div>
 </div>
 <?php include '.includes/footer.php'; ?>
@@ -135,7 +163,6 @@ while ($acara = mysqli_fetch_assoc($exec)) :
             <div class="modal-body">
                 <form action="proses_kategori.php" method="POST">
                     <div>
-                      
                         <label for="namaKategori" class="form-label">Nama Kategori</label>
                         <!-- Input untuk nama kategori baru -->
                         <input type="text" class="form-control" name="nama_acara" required/>
@@ -147,5 +174,5 @@ while ($acara = mysqli_fetch_assoc($exec)) :
                 </form>
             </div>
         </div>
-    </div>
+    </div>
 </div>

@@ -10,12 +10,12 @@ include '.includes/header.php';
 $postIdToEdit = $_GET['post_id'];
 
 //query untuk mengambil data postingan 
-$query = "SELECT * FROM posts WHERE id_post = $postIdToEdit";
+$query = "SELECT * FROM undangan WHERE undangan_id = $postIdToEdit";
 $result = $conn->query($query);
 
 //memeriksa apakah data postingan di temukan 
 if ($result->num_rows > 0) {
-    $post = $result->fetch_assoc();
+    $undangan = $result->fetch_assoc();
 } else {
     //menampilkan pesan 
     echo "Post not found.";
@@ -38,37 +38,37 @@ if ($result->num_rows > 0) {
                         <!-- input data untuk unggah gambar -->
                         <div class="mb-3">
                             <label for="post_title" class="form-label">Judul Postingan</label>
-                            <input type="text" class="form-control" id="post_title" name="post_title" value="<?php echo $post['post_title']; ?>" required>
+                            <input type="text" class="form-control" id="post_title" name="post_title" value="<?php echo $undangan['post_title']; ?>" required>
                         </div>
 
                         <!--input untuk unggah gambar -->
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Judul Postingan</label>
                             <input class="form-control" type="file" id="post_title" name="image_path" accept="iimage/*">
-                            <?php if (!empty($post['image_path'])): ?>
+                            <?php if (!empty($undangan['image_path'])): ?>
                               <!--menampilkan gambar -->
                               <div class="mt-2">
-                                <img src="<?= $post['image_path']; ?>" alt="Current Image" class="img-thumbnail" style="max-width: 200px;">
+                                <img src="<?= $undangan['image_path']; ?>" alt="Current Image" class="img-thumbnail" style="max-width: 200px;">
                               </div>
                               <?php endif; ?>
                         </div>
 
                         <!--dropdown untuk kategori -->
                         <div class="mb-3">
-                            <label for="category_id" class="form-label">Kategori</label>
-                            <select class="form-select" id="category_id" name="category_id" required>
+                            <label for="acara_id" class="form-label">Kategori</label>
+                            <select class="form-select" id="acara_id" name="acara_id" required>
                                 <option value="" selected disabled>Select one</option>
                                 <?php
                                 //mengambil data kategori dari database
-                                $queryCategories = "SELECT * FROM categories";
+                                $queryCategories = "SELECT * FROM acara";
                                 $resultCategories = $conn->query($queryCategories);
 
                                 // menambahkan opsi ke dropdown
                                 if ($resultCategories->num_rows > 0) {
                                     while ($row = $resultCategories->fetch_assoc()) {
                                         //menandai kategori yang sudah terpilih
-                                        $selected = ($row["category_id"] == $post['category_id']) ? "selected" : "";
-                                        echo "<option value='" . $row["category_id"] . "' $selected>" . $row["category_name"] . "</option>";
+                                        $selected = ($row["acara_id"] == $undangan['acara_id']) ? "selected" : "";
+                                        echo "<option value='" . $row["acara_id"] . "' $selected>" . $row["nama_acara"] . "</option>";
                                     }
                                 }
                                 ?>
@@ -78,7 +78,7 @@ if ($result->num_rows > 0) {
                         <!--textarea untuk konten postingan -->
                         <div class="mb-3">
                             <label for="content" class="form-label">Konten</label>
-                            <textarea class="form-control" id="content" name="content" required><?php echo $post['content']; ?></textarea>
+                            <textarea class="form-control" id="content" name="content" required><?php echo $undangan['content']; ?></textarea>
                         </div>
 
 

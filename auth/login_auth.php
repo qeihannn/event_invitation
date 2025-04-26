@@ -5,6 +5,9 @@ require_once("../config.php");
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $namaTamu = $_POST["namaTamu"];
     $email = $_POST["email"];
+    $role = $_POST['role'];
+    $_SESSION["role"] = $row["role"];
+  
 
     $sql = "SELECT * FROM tamu WHERE namaTamu='$namaTamu'";
     $result = $conn->query($sql);

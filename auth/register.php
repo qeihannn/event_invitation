@@ -6,18 +6,18 @@
     <div class="app-brand justify-content-center">
       <a href="index.html" class="app-brand-link gap-2">
         <span class="app-brand-logo demo"></span>
-        <span class="app-brand-text demo text-uppercase fw-bolder">Event Invitation</span>
+        <span class="app-brand-text demo text-uppercase fw-bolder">EvenT Invitation</span>
       </a>
     </div>
     <!-- /Logo -->
     <form action="register_process.php" class="mb-3" method="POST">
       <div class="mb-3">
         <label for="namaTamu" class="form-label">NAMA</label>
-        <input type="text" class="form-control" name="namaTamu" placeholder="Masukkan namaTamu" autofocus/>
+        <input type="text" class="form-control" name="namaTamu" placeholder="Masukkan nama Tamu" autofocus/>
       </div>
       <div class="mb-3">
-        <label for="email" class="form-label">EMAIL</label>
-        <input type="text" class="form-control" name="email" placeholder="Masukkan email" />
+        <label for="Email" class="form-label">EMAIL</label>
+        <input type="text" class="form-control" name="Email" placeholder="Masukkan Email" />
 
       </div>
       <button class="btn btn-primary d-grid w-100">Daftar</button>

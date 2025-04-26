@@ -5,7 +5,7 @@
     <!-- Logo -->
     <div class="app-brand justify-content-center">
       <a href="index.html" class="app-brand-link gap-2">
-        <span class="app-brand-text demo text-uppercase fw-bolder">event invitation</span>
+        <span class="app-brand-text demo text-uppercase fw-bolder">Event Invitation</span>
       </a>
     </div>
     <!-- /Logo -->
@@ -26,10 +26,18 @@
             aria-describedby="email" />
           <span class="input-group-text cursor-pointer"></span>
         </div>
+        <div class="mb-3">
+  <label class="form-label" for="role">LOGIN SEBAGAI</label>
+  <select name="role" class="form-control" required>
+    <option value="user">User</option>
+    <option value="admin">Admin</option>
+  </select>
+</div>
       </div>
       <div class="mb-3">
         <button class="btn btn-primary d-grid w-100" type="submit">MASUK</button>
       </div>
+      
     </form>
     <p class="text-center">
       <span>AKUN</span><a href="register.php"><span> DAFTAR</span></a>

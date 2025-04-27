@@ -9,10 +9,10 @@ include '.includes/toast_notification.php';
     <!-- Tabel data kategori -->
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h4>Data Kategori</h4>
+            <h4>Kategori Event </h4>
             <!-- Tombol untuk menambah kategori baru -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategory">
-                Tambah Kategori
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addacara">
+                Tambah Kategori Event
             </button>
         </div>
         <div class="card-body">
@@ -21,7 +21,7 @@ include '.includes/toast_notification.php';
                     <thead>
                         <tr class="text-center">
                             <th width="50px">#</th>
-                            <th>Nama</th>
+                            <th>EVENT</th>
                             <th width="150px">Pilihan</th>
                         </tr>
                     </thead>
@@ -29,14 +29,15 @@ include '.includes/toast_notification.php';
 <!-- Mengambil data kategori dari database -->
 <?php
 $index = 1;
-$query = "SELECT * FROM categories";
+$query = "SELECT * FROM acara";
 $exec = mysqli_query($conn, $query);
-while ($category = mysqli_fetch_assoc($exec)) :
+while ($acara = mysqli_fetch_assoc($exec)) :
 ?>
 <tr>
     <!-- Menampilkan nomor, nama kategori, dan opsi -->
+     
     <td><?= $index++; ?></td>
-    <td><?= $category['category_name']; ?></td>
+    <td><?= $acara['nama_acara']; ?></td>
     <td>
         <!-- Dropdown untuk opsi Edit dan Delete -->
         <div class="dropdown">
@@ -44,10 +45,10 @@ while ($category = mysqli_fetch_assoc($exec)) :
                 <i class="bx bx-dots-vertical-rounded"></i>
             </button>
             <div class="dropdown-menu">
-                <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editCategory_<?= $category['category_id']; ?>">
+                <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editCategory_<?= $acara['acara_id']; ?>">
                     <i class="bx bx-edit-alt me-2"></i> Edit
                 </a>
-                <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteCategory_<?= $category['category_id']; ?>">
+                <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteCategory_<?= $acara['acara_id']; ?>">
                     <i class="bx bx-trash me-2"></i> Delete
                 </a>
             </div>
@@ -56,7 +57,7 @@ while ($category = mysqli_fetch_assoc($exec)) :
 </tr>
 
 <!-- Modal untuk Hapus Data Kategori -->
-<div class="modal fade" id="deleteCategory_<?= $category['category_id']; ?>" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="deleteCategory_<?= $acara['acara_id']; ?>" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -67,7 +68,7 @@ while ($category = mysqli_fetch_assoc($exec)) :
         <form action="proses_kategori.php" method="POST">
           <div>
             <p>Tindakan ini tidak bisa dibatalkan.</p>
-            <input type="hidden" name="catID" value="<?= $category['category_id']; ?>">
+            <input type="hidden" name="catID" value="<?= $acara['acara_id']; ?>">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
@@ -81,7 +82,7 @@ while ($category = mysqli_fetch_assoc($exec)) :
 
 
 <!-- Modal untuk Update Data Kategori -->
-<div id="editCategory_<?= $category['category_id']; ?>" class="modal fade" tabindex="-1" aria-hidden="true">
+<div id="editCategory_<?= $acara['acara_id']; ?>" class="modal fade" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -91,14 +92,14 @@ while ($category = mysqli_fetch_assoc($exec)) :
       <div class="modal-body">
         <form action="proses_kategori.php" method="POST">
           <!-- Input tersembunyi untuk menyimpan ID kategori -->
-          <input type="hidden" name="catID" value="<?= $category['category_id']; ?>">
+          <input type="hidden" name="catID" value="<?= $acara['acara_id']; ?>">
           <div class="form-group">
-            <label for="category_name">Nama Kategori</label>
+            <label for="nama_acara">Nama Kategori</label>
             <!-- Input untuk nama kategori -->
             <input 
               type="text" 
-              value="<?= $category['category_name']; ?>" 
-              name="category_name" 
+              value="<?= $acara['nama_acara']; ?>" 
+              name="nama_acara" 
               class="form-control" 
             >
           </div>
@@ -113,19 +114,46 @@ while ($category = mysqli_fetch_assoc($exec)) :
 </div>
 
 
-<?php endwhile; ?> 
+<?php endwhile; ?>
 
 
 </tbody>
 </table>
 </div>
 </div>
+
+<div style="display: flex; justify-content: flex-center; gap: 2rem;">
+  <div class="border border-3">
+<div class="card" style="width: 14rem;">
+  <img src="https://pernikahan.or.id/wp-content/uploads/2023/03/canva-putih-merah-bunga-mewah-undangan-pernikahan-Hkh1TyGPAgE-1.jpg" class="card-img-top" alt="">
+  <div class="card-body">
+    <p class="text-center">WEDING</p>
+  </div>
+  </div>
+</div>
+<div class="border border-3">
+<div class="card" style="width: 14rem;">
+  <img src="https://imgv2-2-f.scribdassets.com/img/document/426520668/original/4cf3183ee3/1680082866?v=1" class="card-img-top" alt="">
+  <div class="card-body">
+    <p class="text-center">MEETING</p>
+  </div>
+  </div>
+</div>
+<div class="border border-3">
+<div class="card" style="width: 14rem;">
+  <img src="http://1.bp.blogspot.com/-V1bBCupdAjg/Ula052qYfmI/AAAAAAAAF5g/xIZ0ljEToHE/s1600/Surat+Undangan+Ulang+Tahun+1.jpg" class="card-img-top" alt="">
+  <div class="card-body">
+    <p class="text-center">BIRTHDAY</p>
+  </div>
+  </div>
+  </div>
+</div>
 </div>
 </div>
 <?php include '.includes/footer.php'; ?>
 
 <!-- Modal untuk Tambah Data Kategori -->
-<div class="modal fade" id="addCategory" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="addacara" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -137,7 +165,7 @@ while ($category = mysqli_fetch_assoc($exec)) :
                     <div>
                         <label for="namaKategori" class="form-label">Nama Kategori</label>
                         <!-- Input untuk nama kategori baru -->
-                        <input type="text" class="form-control" name="category_name" required/>
+                        <input type="text" class="form-control" name="nama_acara" required/>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>

@@ -6,11 +6,11 @@
                   <script>
                     document.write(new Date().getFullYear());
                   </script>
-                  <a href="#" target="_blank" class="footer-link fw-bolder">SMKN 4 Tanjungpinang</a>.
+                  <a href="#" target="_blank" class="footer-link fw-bolder">Event invitation</a>.
                   All rights reserved.
                 </div>
                 <div>
-                  <a href="#" target="_blank" class="footer-link me-4">TIM RPL SMKN 4 Tanjungpinang</a>
+                  <a href="#" target="_blank" class="footer-link me-4">Event Invitation</a>
                 </div>
               </div>
             </footer>
@@ -45,4 +45,5 @@
     <!-- Active State JS -->
     <script src="assets/js/active-state-nav.js"></script>
 </body>
+
 </html>

@@ -6,7 +6,7 @@
                   <script>
                     document.write(new Date().getFullYear());
                   </script>
-                  <a href="#" target="_blank" class="footer-link fw-bolder">Event invitation</a>.
+                  <a href="#" target="_blank" class="footer-link fw-bolder">EVENT invitation</a>.
                   All rights reserved.
                 </div>
                 <div>

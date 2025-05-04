@@ -41,13 +41,19 @@ include '.includes/header.php';
                                 ?>
                             </select>
                         </div>
+                        
 
                         <!-- Textarea untuk konten postingan -->
                         <div class="mb-3">
-                            <label for="content" class="form-label">DESKRIPSEN</label>
-                            <textarea class="form-control" id="content" name="content" required></textarea>
+                            <label for="status_kehadiran" class="form-label">Status Kehadiran</label>
+                            <select class="form-select" name="status_kehadiran" required>
+                                <option value="" selected disabled>Pilih salah satu</option>
+                                <option value="hadir">hadir</option>
+            <option value="tidak hadir">tidak hadir</option>
+            <option value="ragu-ragu">ragu-ragu</option>
+                               
+                            </select>
                         </div>
-
                         <!-- Tombol submit -->
                         <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
                     </form>

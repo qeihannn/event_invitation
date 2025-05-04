@@ -83,5 +83,3 @@ if (isset($_POST['update'])) {
     header('Location: kategori.php');
     exit();
 }
-
-

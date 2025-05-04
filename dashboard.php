@@ -1,47 +1,50 @@
 <?php
-include (".includes/header.php");
+include (".includes/header.php"); // Menyertakan header halaman
 $title = "Dashboard";
-// Menyertakan file untuk menampilkan notifikasi (jika ada)
+
+// Menyertakan file notifikasi jika ada pesan dalam session
 include '.includes/toast_notification.php';
 ?>
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <!-- Card untuk menampilkan tabel postingan -->
+    <!-- Card utama untuk menampilkan tabel -->
     <div class="card">
-        <!-- Tabel dengan baris yang dapat di-hover -->
         <div class="card">
             <!-- Header Tabel -->
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h4>INVITATION</h4>
             </div>
+
             <div class="card-body">
-                <!-- Tabel responsif -->
+                <!-- Tabel Responsif -->
                 <div class="table-responsive text-nowrap">
                     <table id="datatable" class="table table-hover">
-            <thead >
-                <tr class="text-center">
-                     <th width="50px">#</th>
-                     <th>Nama Tamu</th>
-                     <th>Pengundang</th>
-                     <th>Kategori event</th>
-                     <th>foto undangan</th>
-                     <th>keterangan tamu</th>
-                     <th width="150px">Pilihan</th>
-                </tr>
-            </thead>
-       <tbody class="table-border-bottom-0">
-<!-- Menampilkan data dari tabel database -->
+                        <thead>
+                            <tr class="text-center">
+                                <th width="50px">#</th>
+                                <th>Nama Tamu</th>
+                                <th>Pengundang</th>
+                                <th>Kategori event</th>
+                                <th>Foto Undangan</th>
+                                <th>Keterangan Tamu</th>
+                                <th width="150px">Pilihan</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+
 <?php
-$index = 1; // Variabel untuk nomor urut
-// Query untuk mengambil data dari tabel undangan, tamu, dan acara
+$index = 1; // Inisialisasi nomor urut
+
+// Query untuk mengambil data undangan yang terkait dengan tamu tertentu
 $query = "SELECT undangan.*, tamu.namaTamu as namaTamu, acara.nama_acara FROM undangan
           INNER JOIN tamu ON undangan.tamu_id = tamu.tamu_id
           LEFT JOIN acara ON undangan.acara_id = acara.acara_id
           WHERE undangan.tamu_id = $tamuId";
-// Eksekusi query
+
+// Menjalankan query
 $exec = mysqli_query($conn, $query);
 
-// Perulangan untuk menampilkan setiap baris hasil query
+// Perulangan untuk menampilkan data undangan
 while ($undangan = mysqli_fetch_assoc($exec)) :
 ?>
 <tr>
@@ -50,40 +53,32 @@ while ($undangan = mysqli_fetch_assoc($exec)) :
     <td><?= $undangan['namaTamu']; ?></td>
     <td><?= $undangan['nama_acara']; ?></td>
     <td><img src="<?= $undangan['image_path']; ?>" alt="" width="40%"></td>
-    <td>
-        <select name="status_kehadiran" required>           
-            <option value="hadir">hadir</option>
-            <option value="tidak hadir">tidak hadir</option>
-            <option value="ragu-ragu">ragu-ragu</option>
-        </select>
-    </td>
+    <td><?= $undangan['status_kehadiran']; ?></td>
+
+    <!-- Opsi Edit dan Hapus -->
     <td>
         <div class="dropdown">
-            <!-- Tombol dropdown untuk Pilihan -->
+            <!-- Tombol Dropdown -->
             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                 <i class="bx bx-dots-vertical-rounded"></i>
             </button>
-            <!-- Menu dropdown -->
+            <!-- Menu Dropdown -->
             <div class="dropdown-menu">
-                <!-- Pilihan Edit -->
+                <!-- Link ke halaman edit -->
                 <a href="edit_post.php?post_id=<?= $undangan['undangan_id']; ?>" class="dropdown-item">
                     <i class="bx bx-edit-alt me-2"></i> Edit
                 </a>
-
-<!-- Pilihan Delete -->
-<a href="#" class="dropdown-item" data-bs-toggle="modal"
-    data-bs-target="#deletePost_<?= $undangan['undangan_id']; ?>">
-    <i class="bx bx-trash me-2"></i> Delete
-</a>
-</div>
+                <!-- Tombol untuk membuka modal hapus -->
+                <a href="#" class="dropdown-item" data-bs-toggle="modal"
+                    data-bs-target="#deletePost_<?= $undangan['undangan_id']; ?>">
+                    <i class="bx bx-trash me-2"></i> Delete
+                </a>
+            </div>
         </div>
-        
     </td>
-    
 </tr>
 
-
-<!-- Modal untuk Hapus Konten Blog -->
+<!-- Modal Konfirmasi Hapus -->
 <div class="modal fade" id="deletePost_<?= $undangan['undangan_id']; ?>" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -95,6 +90,7 @@ while ($undangan = mysqli_fetch_assoc($exec)) :
                 <form action="proses_post.php" method="POST">
                     <div>
                         <p>Tindakan ini tidak bisa dibatalkan.</p>
+                        <!-- Input tersembunyi untuk mengirim ID post -->
                         <input type="hidden" name="postID" value="<?= $undangan['undangan_id']; ?>">
                     </div>
                     <div class="modal-footer">
@@ -106,16 +102,14 @@ while ($undangan = mysqli_fetch_assoc($exec)) :
         </div>
     </div>
 </div>
-<?php endwhile; ?>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<!-- Akhir tabel dengan baris yang dapat di-hover -->
-</div>
+<?php endwhile; ?> 
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+       
+    </div>
 </div>
 
-<?php
-include (".includes/footer.php");
-?>
+<?php include(".includes/footer.php"); ?>

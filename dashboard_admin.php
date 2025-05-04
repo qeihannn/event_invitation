@@ -20,8 +20,8 @@ include '.includes/toast_notification.php';
                     <thead>
                         <tr class="text-center">
                             <th width="50px">#</th>
+                            <th>nama tamu</th>
                             <th>pengundang</th>
-                            <th>Nama Tamu</th>
                             
                             <th>Kategori Event</th>
                             <th>Foto Undangan</th>

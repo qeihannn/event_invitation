@@ -1,46 +1,61 @@
 <?php
-session_start();
-require_once("../config.php");
+session_start(); // Memulai sesi PHP
+require_once("../config.php"); // Mengimpor konfigurasi database
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+// Mengecek apakah request menggunakan metode POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Mengambil input dari form
     $namaTamu = $_POST["namaTamu"];
     $email = $_POST["email"];
-    $role = $_POST['role'];
-    $_SESSION["role"] = $row["role"];
-  
+    $roleInput = $_POST["role"];
 
+    // Query untuk mencari tamu berdasarkan nama
     $sql = "SELECT * FROM tamu WHERE namaTamu='$namaTamu'";
     $result = $conn->query($sql);
 
-    if ($result->num_rows> 0){
-        $row = $result->fetch_assoc();
+    // Mengecek apakah data tamu ditemukan
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc(); // Mengambil data tamu sebagai array asosiatif
 
-        if ($email === $row["email"]) {
+        // Memvalidasi email dan role yang dimasukkan
+        if ($email === $row["email"] && $roleInput === $row["role"]) {
+            // Menyimpan data tamu ke dalam session
             $_SESSION["namaTamu"] = $namaTamu;
-            $_SESSION["status_kehadiran"] = $row["status_kehadiran"];
             $_SESSION["tamu_id"] = $row["tamu_id"];
+            $_SESSION["role"] = $row["role"];
 
+            // Menyimpan notifikasi berhasil login
             $_SESSION['notification'] = [
                 'type' => 'primary',
                 'message' => 'selamat datang'
             ];
-            header('Location: ../dashboard.php');
+
+            // Mengarahkan pengguna ke halaman sesuai role
+            if ($row["role"] == "user") {
+                header('Location: ../posts.php'); // Halaman untuk user biasa
+            } else {
+                header('Location: ../dashboard_admin.php'); // Halaman untuk admin
+            }
             exit();
-        }else {
+        } else {
+            // Email atau role salah
             $_SESSION['notification'] = [
                 'type' => 'danger',
-                'message' => 'namaTamu atau email salah'
+                'message' => 'nama Tamu atau email salah'
             ];
         }
     } else {
+        // Nama tamu tidak ditemukan
         $_SESSION['notification'] = [
-            'type' =>'danger',
-            'message' => 'namaTamu atau email salah',
-
+            'type' => 'danger',
+            'message' => 'nama Tamu atau email salah'
         ];
     }
+
+    // Redirect kembali ke halaman login jika gagal
     header('Location: login.php');
     exit();
 }
-$conn->close();
+
+$conn->close(); // Menutup koneksi ke database
 ?>

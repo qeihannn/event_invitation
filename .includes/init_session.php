@@ -9,5 +9,3 @@ $notification = $_SESSION['notification'] ?? null;
 if ($notification) {
     unset($_SESSION['notification']);
 }
-
-

@@ -1,43 +1,23 @@
-<!-- Menu -->
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-  <div class="app-brand demo">
-    <a href="./dashboard.php" class="app-brand-link">
-      <span class="app-brand-text demo menu-text fw-bolder ms-0 text-uppercase" style="font-size: 24px;">EVENT INVITATION</span>
-    </a>
-    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-      <i class="bx bx-chevron-left bx-sm align-middle"></i>
-    </a>
+<!-- Bootstrap Toast -->
+<?php if ($notification): ?>
+  <div id="notifikasi" class="bs-toast toast fade bg-<?= $notification['type'] ?> position-absolute m-3 end-0" role="alert" data-bs-autohide="true">
+    <div class="toast-header">
+      <i class="bx bx-bell me-2"></i>
+      <strong class="me-auto"><?= $notification['title'] ?? 'Notifikasi' ?></strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      <?= $notification['message'] ?>
+    </div>
   </div>
-  <div class="menu-inner-shadow"></div>
-  <ul class="menu-inner py-1">
-    <!-- Dashboard -->
-    <li class="menu-item">
-      <a href="dashboard.php" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-home-circle"></i>
-        <div data-i18n="Analytics">Undangan</div>
-      </a>
-    </li>
-    <!-- Forms & Tables -->
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">Posts</span></li>
-    <!-- Forms -->
-    <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-detail"></i>
-        <div data-i18n="Posts">Posts</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item">
-          <a href="posts.php" class="menu-link">
-            <div data-i18n="Basic Inputs">Post Baru</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="kategori.php" class="menu-link">
-            <div data-i18n="Input groups">Kategori</div>
-          </a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</aside>
-<!-- / Menu -->
+<?php endif; ?>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toastEl = document.getElementById('notifikasi');
+    if (toastEl) {
+      const toast = new bootstrap.Toast(toastEl);
+      toast.show();
+    }
+  });
+</script>

@@ -19,13 +19,13 @@
       <!-- Input Nama -->
       <div class="mb-3">
         <label for="namaTamu" class="form-label">NAMA</label>
-        <input type="text" class="form-control" name="namaTamu" placeholder="Masukkan namaTamu" autofocus/>
+        <input type="text" class="form-control" name="namaTamu" placeholder="Masukkan Nama Tamu" autofocus/>
       </div>
 
       <!-- Input Email -->
       <div class="mb-3">
         <label for="Email" class="form-label">EMAIL</label>
-        <input type="text" class="form-control" name="Email" placeholder="Masukkan Email" />
+        <input type="email" class="form-control" name="email" placeholder="Masukkan Email" />
       </div>
 
       <!-- Pilihan Role -->

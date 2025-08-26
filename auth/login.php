@@ -21,7 +21,7 @@
       <div class="mb-3">
         <label class="form-label">NAMA</label>
         <input type="text" class="form-control" name="namaTamu"
-          placeholder="Enter your nama" autofocus required />
+          placeholder="Masukkan Nama Anda" autofocus required />
       </div>
 
       <!-- Input Email -->

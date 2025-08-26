@@ -4,6 +4,7 @@ session_start(); // Memulai sesi PHP untuk menyimpan notifikasi atau data penggu
 
 // Mengecek apakah request dilakukan melalui metode POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
     // Mengambil data dari form registrasi
     $namaTamu = $_POST["namaTamu"];
     $email = $_POST["email"];

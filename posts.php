@@ -28,6 +28,7 @@ include '.includes/header.php';
                             <label for="acara_id" class="form-label">KATEGORI EVENT</label>
                             <select class="form-select" name="acara_id" required>
                                 <option value="" selected disabled>Pilih salah satu</option>
+                                
                                 <?php
                                 $query = "SELECT * FROM acara"; // Query untuk mengambil data kategori
                                 $result = $conn->query($query); // Menjalankan query kategori

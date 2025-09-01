@@ -2,19 +2,17 @@
 include(".includes/header.php");
 $title = "Dashboard";
 
-// Menyertakan file untuk menampilkan notifikasi (jika ada)
 include '.includes/toast_notification.php';
 ?>
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <!-- Card untuk menampilkan tabel postingan -->
     <div class="card">
-        <!-- Header Tabel -->
+
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4>ADMIN</h4>
         </div>
         <div class="card-body">
-            <!-- Tabel responsif -->
+
             <div class="table-responsive text-nowrap">
                 <table id="datatable" class="table table-hover">
                     <thead>
@@ -31,9 +29,9 @@ include '.includes/toast_notification.php';
                     </thead>
                     <tbody class="table-border-bottom-0">
                         <?php
-                        $index = 1; // Variabel untuk nomor urut
+                        $index = 1; 
 
-                        // Query: Ambil semua undangan tanpa filter tamu_id
+    
                         $query = "SELECT undangan.*, tamu.namaTamu as namaTamu, acara.nama_acara 
                                   FROM undangan
                                   INNER JOIN tamu ON undangan.tamu_id = tamu.tamu_id
@@ -42,7 +40,7 @@ include '.includes/toast_notification.php';
 
                         $exec = mysqli_query($conn, $query);
 
-                        // Tampilkan datanya
+      
                         while ($undangan = mysqli_fetch_assoc($exec)) :
                         ?>
                         <tr class="text-center">
@@ -70,7 +68,6 @@ include '.includes/toast_notification.php';
                             </td>
                         </tr>
 
-                        <!-- Modal Hapus Post -->
                         <div class="modal fade" id="deletePost_<?= $undangan['undangan_id']; ?>" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">

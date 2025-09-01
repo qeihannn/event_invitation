@@ -1,22 +1,19 @@
 <?php
-include (".includes/header.php"); // Menyertakan header halaman
+include (".includes/header.php"); 
 $title = "Dashboard";
 
-// Menyertakan file notifikasi jika ada pesan dalam session
 include '.includes/toast_notification.php';
 ?>
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <!-- Card utama untuk menampilkan tabel -->
     <div class="card">
         <div class="card">
-            <!-- Header Tabel -->
+
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h4>INVITATION</h4>
             </div>
 
             <div class="card-body">
-                <!-- Tabel Responsif -->
                 <div class="table-responsive text-nowrap">
                     <table id="datatable" class="table table-hover">
                         <thead>
@@ -33,18 +30,16 @@ include '.includes/toast_notification.php';
                         <tbody class="table-border-bottom-0">
 
 <?php
-$index = 1; // Inisialisasi nomor urut
+$index = 1;
 
-// Query untuk mengambil data undangan yang terkait dengan tamu tertentu
 $query = "SELECT undangan.*, tamu.namaTamu as namaTamu, acara.nama_acara FROM undangan
           INNER JOIN tamu ON undangan.tamu_id = tamu.tamu_id
           LEFT JOIN acara ON undangan.acara_id = acara.acara_id
           WHERE undangan.tamu_id = $tamuId";
 
-// Menjalankan query
+
 $exec = mysqli_query($conn, $query);
 
-// Perulangan untuk menampilkan data undangan
 while ($undangan = mysqli_fetch_assoc($exec)) :
 ?>
 <tr>
@@ -55,20 +50,16 @@ while ($undangan = mysqli_fetch_assoc($exec)) :
     <td><img src="<?= $undangan['image_path']; ?>" alt="" width="40%"></td>
     <td><?= $undangan['status_kehadiran']; ?></td>
 
-    <!-- Opsi Edit dan Hapus -->
     <td>
         <div class="dropdown">
-            <!-- Tombol Dropdown -->
             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                 <i class="bx bx-dots-vertical-rounded"></i>
             </button>
-            <!-- Menu Dropdown -->
+    
             <div class="dropdown-menu">
-                <!-- Link ke halaman edit -->
                 <a href="edit_post.php?post_id=<?= $undangan['undangan_id']; ?>" class="dropdown-item">
                     <i class="bx bx-edit-alt me-2"></i> Edit
                 </a>
-                <!-- Tombol untuk membuka modal hapus -->
                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
                     data-bs-target="#deletePost_<?= $undangan['undangan_id']; ?>">
                     <i class="bx bx-trash me-2"></i> Delete

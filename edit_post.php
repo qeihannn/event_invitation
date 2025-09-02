@@ -62,6 +62,17 @@ if ($result->num_rows > 0) {
                             </select>
                         </div>
 
+                         <div class="mb-3">
+                            <label for="status_kehadiran" class="form-label">Status Kehadiran</label>
+                            <select class="form-select" name="status_kehadiran" required>
+                                <option value="" disabled <?php echo empty($undangan['status_kehadiran']) ? 'selected' : ''; ?>>Pilih salah satu</option>
+                                <option value="hadir" <?php echo ($undangan['status_kehadiran'] == 'hadir') ? 'selected' : ''; ?>>hadir</option>
+                                <option value="tidak hadir" <?php echo ($undangan['status_kehadiran'] == 'tidak hadir') ? 'selected' : ''; ?>>tidak hadir</option>
+                                <option value="ragu-ragu" <?php echo ($undangan['status_kehadiran'] == 'ragu-ragu') ? 'selected' : ''; ?>>ragu-ragu</option>
+                            </select>
+                        </div>
+
+
                         <div class="mb-3">
                             <label for="content" class="form-label">Konten</label>
                             <textarea class="form-control" id="content" name="content" required><?php echo $undangan['content']; ?></textarea>

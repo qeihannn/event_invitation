@@ -54,19 +54,6 @@ include '.includes/toast_notification.php';
                             <td><img src="<?= $undangan['image_path']; ?>" alt="" width="100px"></td>
                             <td><?= $undangan['status_kehadiran']; ?></td>
                             <td>
-                                <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a href="edit_post.php?post_id=<?= $undangan['undangan_id']; ?>" class="dropdown-item">
-                                            <i class="bx bx-edit-alt me-2"></i> Edit
-                                        </a>
-                                        <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deletePost_<?= $undangan['undangan_id']; ?>">
-                                            <i class="bx bx-trash me-2"></i> Delete
-                                        </a>
-                                    </div>
-                                </div>
                             </td>
                         </tr>
 

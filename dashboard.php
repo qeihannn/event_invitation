@@ -11,6 +11,8 @@ include '.includes/toast_notification.php';
 
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h4>INVITATION</h4>
+
+                <a href="posts.php" class="btn btn-secondary">Tambah tamu</a>
             </div>
 
             <div class="card-body">

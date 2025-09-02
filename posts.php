@@ -1,9 +1,7 @@
-Siap 👍
-Berikut kode kamu sudah saya **hapus semua komennya** tanpa mengubah logika:
-
-```php
 <?php
 include '.includes/header.php';
+
+
 ?>
 
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -49,7 +47,12 @@ include '.includes/header.php';
                         </div>
 
                         <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                        <a href="dashboard.php" class="btn btn-secondary">Dashboard</a>
+
+
                     </form>
+                
+
                 </div>
             </div>
         </div>
